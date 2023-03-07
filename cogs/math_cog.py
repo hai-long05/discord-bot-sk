@@ -37,13 +37,15 @@ class MathCog(Cog):
 
     @command(name='solutions')
     async def solution(self, ctx: Context, *args):
-        temp = ''.join(args)
-        solutions = str(temp)
-        if solutions == self.solutions:
-            await ctx.reply('Your answer is true')
-            self.solutions = ''
-        else:
-            await ctx.reply('Wrong answer')
-
+        # temp = ''.join(args)
+        # print(temp)
+        # print(self.solutions)
+        # solutions = str(temp)
+        # if solutions == self.solutions:
+        #     await ctx.reply('Your answer is true')
+        #     self.solutions = ''
+        # else:
+        #     await ctx.reply('Wrong answer')
+        await ctx.reply(self.solutions)
 
     

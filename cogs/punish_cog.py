@@ -28,7 +28,8 @@ class PunishCog(Cog):
 
 
     @command(name='spam')
-    async def spam(self, ctx: Context, member_id):
+    async def spam(self, ctx: Context, member_id, amount,*arg):
+        text = ' '.join(arg)
         member_to_spam = await self.check_for_id(ctx, member_id)
 
         for member in ctx.guild.members:
@@ -37,11 +38,11 @@ class PunishCog(Cog):
 
                 await member.create_dm()
 
-                for j in range(200):
+                for j in range(amount):
 
                     await sleep(0.5)
                     
-                    await member.send('Zyra - Alive')
+                    await member.send(text)
 
 
     async def check_for_id(self, ctx: Context, member_id):
@@ -68,8 +69,7 @@ class PunishCog(Cog):
                 member_to_move = members
                 break
 
-        vc_channels = [924788779867336734, 926179778128642128, 917036688155496448, 924654521169367080, 924701092305072198, 930095865505402901]
-        #vc_channels = [831889211191853140, 842133919184977971, 831904206213480450, 839568896826409020, 875712704315289671, 831894734426472498]
+        vc_channels = [941028680271032352, 924788779867336734, 926179778128642128, 935153503519784980, 939547541903642684]
         for i in range(20):
 
             if i == 9:

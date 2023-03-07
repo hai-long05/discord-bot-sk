@@ -21,8 +21,15 @@ class PicturesCog(Cog):
             user_passwort = f.readlines()
 
 
-        USER = user_name 
-        PASSWORD = user_passwort[0]
+        # USER = user_name 
+        # PASSWORD = user_passwort[0]
+
+        # print(USER)
+        # print(PASSWORD)
+
+        USER = "private_mf_thighs"
+        PASSWORD = "04.05.05HL"
+
 
         L.login(USER, PASSWORD)         # login
         

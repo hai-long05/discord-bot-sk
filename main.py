@@ -12,7 +12,7 @@ from cogs.punish_cog import PunishCog
 from cogs.music_cog import MusicCog
 from cogs.games_cog import GamesCog
 from cogs.lesson_cog import LessonCog
-from cogs.help_cog import HelpCog
+# from cogs.help_cog import HelpCog
 
 def get_token():
     with open('./data/token') as f:
@@ -39,8 +39,6 @@ bot.add_cog(CommandsCog(bot))
 bot.add_cog(CountingCog(bot))
 
 bot.add_cog(LessonCog(bot))
-
-bot.add_cog(HelpCog(bot))
 
 bot.run(get_token())
 

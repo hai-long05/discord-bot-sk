@@ -6,7 +6,7 @@ import asyncio
 import random
 import yt_dlp
 
-from discord import voice_client
+from discord import voice_client, Embed
 #from discord.ext.commands.context import Context
 from discord.ext.commands.errors import ChannelNotFound
 from discord.ext.commands import Cog, Bot, Context, command
@@ -86,18 +86,21 @@ class MusicCog(Cog):
     async def queue(self, ctx:Context):
         if self.music_queue == []:
             return await ctx.reply('Nothing in the queue')
-        a = 0
-        q = ""
+        count = 0
+        embed = Embed()
+        q = ''
+        current = ''
         for i in self.music_queue:
-            if a == 0:
-                q += i + '\n'
-            elif a == 1:
-                q += '--------------' + '\n' + str(a) + ')' + '    ' + i
-            else:
-                q += str(a) + ')' + '    ' + i + '\n'
-            a += 1
+            if (count == 0):
+                current += i
+                count += 1
+                continue
+            q += i + '\n'
+        embed.add_field(name="Currently Playing: ", value=current, inline=False)
+        embed.add_field(name="Next: ", value=q)
+        await ctx.reply(embed=embed)
 
-        await ctx.reply(f'currently playing:\n{q}')
+
 
     
     @command(name='skip')
@@ -113,15 +116,6 @@ class MusicCog(Cog):
         await asyncio.sleep(6)
         self.music_queue = []
         self.vc = ""
-
-    
-    @command(name='Blackpink')
-    async def Blackpink(self, ctx:Context):
-        songs = ['How You Like That', 'DDU-DU DDU-DU', 'Kill This Love', 'AS IF IT\'S YOUR LAST', 'BOOMBAYAH', 'PLAYING WITH FIRE', 'STAY', 'Lovesick Girls']
-        number = random.randint(0,len(songs)-1)
-        song_title = songs[number]
-        await self.play(ctx, song_title)
-
 
     
     @command(name='vibe')
