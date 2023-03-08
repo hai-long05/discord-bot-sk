@@ -155,3 +155,6 @@ class CommandsCog(Cog):
                         description='', color=0x4cd1f7, timestamp=datetime.now().astimezone(tz=de))
         # embed.add_field(name = ) 
         await ctx.reply(embed=embed)
+
+
+        pass
